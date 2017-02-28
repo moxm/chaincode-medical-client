@@ -43,8 +43,8 @@ function get() {
     _chain = new Chain(chainName, client);
     var peer = new Peer('grpc://localhost:7051');
     _chain.addPeer(peer);
-    var test_peer = new Peer('grpc://localhost:7051');
-    _chain.setPrimaryPeer(test_peer);
+    // var test_peer = new Peer('grpc://localhost:7051');
+    // _chain.setPrimaryPeer(test_peer);
 
     _chain.queryBlockByHash()
         .then(
