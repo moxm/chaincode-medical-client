@@ -37,6 +37,8 @@ var client = new Client();
     query(req, res);
 })*/
 
+get();
+
 function get() {
     _chain = new Chain(chainName, client);
     var peer = new Peer('grpc://localhost:7051');
