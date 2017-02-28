@@ -47,72 +47,72 @@ function get() {
     _chain.queryBlockByHash()
         .then(
             function(results) {
-                t.fail('Error: Blockhash bytes are required');
-                t.end();
+                // t.fail('Error: Blockhash bytes are required');
+                // t.end();
             },
             function(err) {
                 var errMessage = 'Error: Blockhash bytes are required';
-                if(err.toString() == errMessage) t.pass(errMessage);
-                else t.fail(errMessage);
+                // if(err.toString() == errMessage) t.pass(errMessage);
+                // else t.fail(errMessage);
                 return _chain.queryTransaction();
             }
         ).then(
         function(results) {
-            t.fail('Error: Transaction id is required');
-            t.end();
+            // t.fail('Error: Transaction id is required');
+            // t.end();
         },
         function(err) {
-            t.pass(err);
+            // t.pass(err);
             return _chain.queryBlock('a');
         }
     ).then(
         function(results) {
-            t.fail('Error: block id must be integer');
-            t.end();
+            // t.fail('Error: block id must be integer');
+            // t.end();
         },
         function(err) {
             var errMessage = 'Error: Block number must be a postive integer';
-            if(err.toString() == errMessage) t.pass(errMessage);
-            else t.fail(errMessage);
+            // if(err.toString() == errMessage) t.pass(errMessage);
+            // else t.fail(errMessage);
             return _chain.queryBlock();
         }
     ).then(
         function(results) {
-            t.fail('Error: block id is required');
-            t.end();
+            // t.fail('Error: block id is required');
+            // t.end();
         },
         function(err) {
             var errMessage = 'Error: Block number must be a postive integer';
-            if(err.toString() == errMessage) t.pass(errMessage);
-            else t.fail(errMessage);
+            // if(err.toString() == errMessage) t.pass(errMessage);
+            // else t.fail(errMessage);
             return _chain.queryBlock(-1);
         }
     ).then(
         function(results) {
-            t.fail('Error: block id must be postive integer');
-            t.end();
+            // t.fail('Error: block id must be postive integer');
+            // t.end();
         },
         function(err) {
             var errMessage = 'Error: Block number must be a postive integer';
-            if(err.toString() == errMessage) t.pass(errMessage);
-            else t.fail(errMessage);
+            // if(err.toString() == errMessage) t.pass(errMessage);
+            // else t.fail(errMessage);
             return _chain.queryBlock(10.5);
         }
     ).then(
         function(results) {
-            t.fail('Error: block id must be integer');
-            t.end();
+            // t.fail('Error: block id must be integer');
+            // t.end();
         },
         function(err) {
             var errMessage = 'Error: Block number must be a postive integer';
-            if(err.toString() == errMessage) t.pass(errMessage);
-            else t.fail(errMessage);
-            t.end();
+            // if(err.toString() == errMessage) t.pass(errMessage);
+            // else t.fail(errMessage);
+            // t.end();
         }
     ).catch(
         function(err) {
-            t.fail('should not have gotten the catch ' + err);
-            t.end();
+            // t.fail('should not have gotten the catch ' + err);
+            // t.end();
         }
     );
 }
