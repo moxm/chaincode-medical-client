@@ -20,7 +20,7 @@ var client = new hfc();
 var chain;
 
 
-router.get('/:name', function (req, res) {
+/*router.get('/:name', function (req, res) {
     // res.send('Hello World!')
     console.log("query > name: " + req.params.name);
     console.log(req.body);
@@ -28,8 +28,9 @@ router.get('/:name', function (req, res) {
         init();
     }
     query(req, res);
-})
-
+})*/
+init();
+query(null, null);
 function query(req, res) {
     var targets = [];
     for (var i = 0; i < config.peers.length; i++) {
