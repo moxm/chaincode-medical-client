@@ -46,6 +46,11 @@ function get() {
     // var test_peer = new Peer('grpc://localhost:7051');
     // _chain.setPrimaryPeer(test_peer);
 
+    _chain.queryBlock('a').then(function(result) {
+        logger.debug(result);
+    });
+
+    /*
     _chain.queryBlockByHash()
         .then(
             function(results) {
@@ -117,6 +122,7 @@ function get() {
             // t.end();
         }
     );
+    */
 }
 
 // init();
