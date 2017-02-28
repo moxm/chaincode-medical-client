@@ -51,8 +51,8 @@ function get() {
         chainId: 'test_cc',
         fcn: 'invoke',
         args: ["query","b"],
-        txId: 'blah',
-        nonce: 'blah'
+        txId: 'test_cc',
+        nonce: 'test_cc'
     }).then(function () {
         t.fail('Should not have been able to resolve the promise because of missing "chainId" parameter in queryByChaincode');
     }).catch(function (err) {
