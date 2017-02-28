@@ -9,12 +9,14 @@ var logger = log4js.getLogger('QUERY');
 logger.setLevel('DEBUG');
 
 var hfc = require('fabric-client');
-var utils = require('fabric-client/lib/utils.js');
+var testutil = require('./util.js');
 var Peer = require('fabric-client/lib/Peer.js');
+var Chain = require('fabric-client/lib/Chain.js');
+var Packager = require('fabric-client/lib/Packager.js');
 var Orderer = require('fabric-client/lib/Orderer.js');
 
-var config = require('./config.json');
-var helper = require('./helper.js');
+// var config = require('./config.json');
+// var helper = require('./helper.js');
 
 var client = new hfc();
 var chain;
