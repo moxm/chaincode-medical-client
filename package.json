@@ -7,7 +7,6 @@
     "start": "node ./bin/www"
   },
   "devDependencies": {
-    "hashtable": "file:./node_modules/hashtable",
     "fabric-ca-client": "file:./node_modules/fabric-sdk-node/fabric-ca-client",
     "fabric-client": "file:./node_modules/fabric-sdk-node/fabric-client",
     "log4js": "^0.6.38",
