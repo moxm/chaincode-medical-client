@@ -48,6 +48,7 @@ function get() {
 
     _chain.queryByChaincode({
         chaincodeId: 'test_cc',
+        chainId: 'test_cc',
         fcn: 'invoke',
         args: ["query","b"],
         txId: 'blah',
@@ -142,6 +143,7 @@ function get() {
 
 // init();
 // query(null, null);
+/*
 function query(req, res) {
     var targets = [];
     for (var i = 0; i < config.peers.length; i++) {
@@ -178,4 +180,4 @@ function init() {
     for (var i = 0; i < config.peers.length; i++) {
         chain.addPeer(new Peer(config.peers[i].peer_url));
     }
-}
+}*/
