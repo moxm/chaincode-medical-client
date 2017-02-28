@@ -41,7 +41,7 @@ function query(req, res) {
     var request = {
         targets: targets,
         chaincodeId: config.chaincodeID,
-        chainId: config.channelID,
+        // chainId: config.channelID,
         txId: utils.buildTransactionID(),
         nonce: utils.getNonce(),
         fcn: config.queryRequest.functionName,
