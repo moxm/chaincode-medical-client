@@ -19,7 +19,46 @@ var helper = require('./helper.js');
 var client = new hfc();
 var chain;
 
-init();
+
+router.get('/:name', function (req, res) {
+    // res.send('Hello World!')
+    console.log("query > name: " + req.params.name);
+    console.log(req.body);
+    if (!chain) {
+        init();
+    }
+    query(req, res);
+})
+
+function query(req, res) {
+    var targets = [];
+    for (var i = 0; i < config.peers.length; i++) {
+        targets.push(config.peers[i]);
+    }
+    var args = helper.getArgs(config.queryRequest.args);
+	//chaincode query request
+    var request = {
+        targets: targets,
+        chaincodeId: config.chaincodeID,
+        chainId: config.channelID,
+        txId: utils.buildTransactionID(),
+        nonce: utils.getNonce(),
+        fcn: config.queryRequest.functionName,
+        args: args
+    };
+
+    chain.queryByChaincode(request).then(
+        function(response_payloads) {
+            for (let i = 0; i < response_payloads.length; i++) {
+                logger.info('############### Query results after the move on PEER%j, User "b" now has  %j', i, response_payloads[i].toString('utf8'));
+            }
+        }
+    ).catch(
+        function(err) {
+            logger.error('Failed to end to end test with error:' + err.stack ? err.stack : err);
+        }
+    );
+}
 
 function init() {
     chain = client.newChain(config.chainName);
@@ -29,29 +68,7 @@ function init() {
     }
 }
 
-var args = helper.getArgs(config.queryRequest.args);
-//chaincode query request
-var request = {
-    targets: targets,
-    chaincodeId: config.chaincodeID,
-    chainId: config.channelID,
-    txId: utils.buildTransactionID(),
-    nonce: utils.getNonce(),
-    fcn: config.queryRequest.functionName,
-    args: args
-};
 
-chain.queryByChaincode(request).then(
-    function(response_payloads) {
-        for (let i = 0; i < response_payloads.length; i++) {
-            logger.info('############### Query results after the move on PEER%j, User "b" now has  %j', i, response_payloads[i].toString('utf8'));
-        }
-    }
-).catch(
-    function(err) {
-        logger.error('Failed to end to end test with error:' + err.stack ? err.stack : err);
-    }
-);
 /*
 hfc.newDefaultKeyValueStore({
 	path: config.keyValueStore
