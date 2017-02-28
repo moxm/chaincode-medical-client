@@ -46,14 +46,28 @@ function get() {
     // var test_peer = new Peer('grpc://localhost:7051');
     // _chain.setPrimaryPeer(test_peer);
 
-    _chain.queryBlock('a').then(function(result) {
-        logger.debug(result);
+    _chain.queryByChaincode({
+        chaincodeId: 'test_cc',
+        fcn: 'invoke',
+        args: ["query","b"],
+        txId: 'blah',
+        nonce: 'blah'
+    }).then(function () {
+        t.fail('Should not have been able to resolve the promise because of missing "chainId" parameter in queryByChaincode');
+    }).catch(function (err) {
+        if (err.message.indexOf('Missing "chainId" parameter in the proposal request') >= 0) {
+            t.pass('Successfully caught missing chainId error');
+        } else {
+            t.fail('Failed to catch the queryByChaincode missing chainId error. Error: ' + err.stack ? err.stack : err);
+        }
     });
 
     /*
     _chain.queryBlockByHash()
         .then(
             function(results) {
+                logger.debug("queryBlockByHash > result :");
+                logger.debug(results);
                 // t.fail('Error: Blockhash bytes are required');
                 // t.end();
             },
@@ -123,6 +137,7 @@ function get() {
         }
     );
     */
+
 }
 
 // init();
