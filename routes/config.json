@@ -7,7 +7,7 @@
    "keyValueStore":"/tmp/fabric-client-kvs",
    "waitTime":"30000",
    "caserver":{
-      "ca_url":"http://localhost:8888"//7054
+      "ca_url":"http://localhost:8888"
    },
    "orderer":{
       "orderer_url":"grpc://localhost:7050"
