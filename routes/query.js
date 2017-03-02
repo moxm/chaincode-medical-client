@@ -14,6 +14,7 @@ var Peer = require('fabric-client/lib/Peer.js');
 var Chain = require('fabric-client/lib/Chain.js');
 var Packager = require('fabric-client/lib/Packager.js');
 var Orderer = require('fabric-client/lib/Orderer.js');
+var utils = require('fabric-client/lib/utils.js');
 
 // var config = require('./config.json');
 // var helper = require('./helper.js');
