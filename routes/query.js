@@ -28,15 +28,6 @@ var Client = hfc;
 var client = new Client();
 
 
-/*router.get('/:name', function (req, res) {
-    // res.send('Hello World!')
-    console.log("query > name: " + req.params.name);
-    console.log(req.body);
-    if (!chain) {
-        init();
-    }
-    query(req, res);
-})*/
 
 get();
 
@@ -68,6 +59,18 @@ function get() {
             logger.error('Failed to end to end test with error:' + err.stack ? err.stack : err);
         }
     );
+
+
+    /*router.get('/:name', function (req, res) {
+     // res.send('Hello World!')
+     console.log("query > name: " + req.params.name);
+     console.log(req.body);
+     if (!chain) {
+     init();
+     }
+     query(req, res);
+     })*/
+
 
     /*
     _chain.queryBlockByHash()
