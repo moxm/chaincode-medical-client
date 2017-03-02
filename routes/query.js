@@ -19,7 +19,7 @@ var utils = require('fabric-client/lib/utils.js');
 // var config = require('./config.json');
 // var helper = require('./helper.js');
 
-var client = new hfc();
+// var client = new hfc();
 var chain;
 
 var _chain = null;
@@ -41,7 +41,7 @@ var client = new Client();
 get();
 
 function get() {
-    _chain = new Chain(chainName, client);
+    _chain = new Chain(chainName);
     var peer = new Peer('grpc://localhost:7051');
     _chain.addPeer(peer);
 
