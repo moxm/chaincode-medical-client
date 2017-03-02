@@ -57,7 +57,7 @@ function get() {
         args: ["query","b"]
     };
 
-    chain.queryByChaincode(request).then(
+    _chain.queryByChaincode(request).then(
         function(response_payloads) {
             for (let i = 0; i < response_payloads.length; i++) {
                 logger.info('############### Query results after the move on PEER%j, User "b" now has  %j', i, response_payloads[i].toString('utf8'));
