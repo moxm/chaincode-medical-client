@@ -51,7 +51,7 @@ function get() {
         // targets: targets,
         chaincodeId: "test_cc",
         chainId: "test_cc",
-        txId: utils.buildTransactionID(),
+        txId: "test_cc",
         nonce: utils.getNonce(),
         fcn: "invoke",
         args: ["query","b"]
