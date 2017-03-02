@@ -32,7 +32,7 @@ var client = new Client();
 get();
 
 function get() {
-    var c = new Chain(chainName);
+    var c = new Chain(chainName, client);
     var peer = new Peer('grpc://localhost:7051');
     c.addPeer(peer);
 
