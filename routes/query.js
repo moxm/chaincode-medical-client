@@ -20,7 +20,7 @@ var utils = require('fabric-client/lib/utils.js');
 // var helper = require('./helper.js');
 
 // var client = new hfc();
-var chain;
+// var chain;
 
 var _chain = null;
 var chainName = 'test_cc';
@@ -32,9 +32,9 @@ var client = new Client();
 get();
 
 function get() {
-    _chain = new Chain(chainName);
+    var c = new Chain(chainName);
     var peer = new Peer('grpc://localhost:7051');
-    _chain.addPeer(peer);
+    c.addPeer(peer);
 
 
     //chaincode query request
@@ -48,7 +48,7 @@ function get() {
         args: ["query","b"]
     };
 
-    _chain.queryByChaincode(request).then(
+    c.queryByChaincode(request).then(
         function(response_payloads) {
             for (let i = 0; i < response_payloads.length; i++) {
                 logger.info('############### Query results after the move on PEER%j, User "b" now has  %j', i, response_payloads[i].toString('utf8'));
