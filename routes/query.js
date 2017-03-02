@@ -43,25 +43,30 @@ function get() {
     _chain = new Chain(chainName, client);
     var peer = new Peer('grpc://localhost:7051');
     _chain.addPeer(peer);
-    // var test_peer = new Peer('grpc://localhost:7051');
-    // _chain.setPrimaryPeer(test_peer);
 
-    _chain.queryByChaincode({
-        chaincodeId: 'test_cc',
-        chainId: 'test_cc',
-        fcn: 'invoke',
-        args: ["query","b"],
-        txId: 'test_cc',
-        nonce: 'test_cc'
-    }).then(function () {
-        // t.fail('Should not have been able to resolve the promise because of missing "chainId" parameter in queryByChaincode');
-    }).catch(function (err) {
-        if (err.message.indexOf('Missing "chainId" parameter in the proposal request') >= 0) {
-            // t.pass('Successfully caught missing chainId error');
-        } else {
-            // t.fail('Failed to catch the queryByChaincode missing chainId error. Error: ' + err.stack ? err.stack : err);
+
+    //chaincode query request
+    var request = {
+        // targets: targets,
+        chaincodeId: "test_cc",
+        chainId: "test_cc",
+        txId: utils.buildTransactionID(),
+        nonce: utils.getNonce(),
+        fcn: "invoke",
+        args: ["query","b"]
+    };
+
+    chain.queryByChaincode(request).then(
+        function(response_payloads) {
+            for (let i = 0; i < response_payloads.length; i++) {
+                logger.info('############### Query results after the move on PEER%j, User "b" now has  %j', i, response_payloads[i].toString('utf8'));
+            }
         }
-    });
+    ).catch(
+        function(err) {
+            logger.error('Failed to end to end test with error:' + err.stack ? err.stack : err);
+        }
+    );
 
     /*
     _chain.queryBlockByHash()
